@@ -1,7 +1,7 @@
 [package]
 
 name = "worm"
-version = "0.0.1"
+version = "0.0.2"
 authors = [ "alexchandel@gmail.com" ]
 
 [[bin]]

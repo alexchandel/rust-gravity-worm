@@ -149,10 +149,10 @@ fn main() {
 		for (num, worm) in g.worm_height.iter().enumerate() {
 			ncurses::mvprintw(*worm as i32, num as i32, "="); // Worm
 		}
-		ncurses::mvprintw(0, 0, format!("Score: {0}", g.score).as_slice());
+		ncurses::mvprintw(0, 0, format!("Score: {0}    ", g.score).as_slice());
 		/* Check for game over */
 		if !g.worm_alive() {
-			ncurses::mvprintw(1, 0, "GAME OVER!");
+			ncurses::mvprintw(1, 0, "GAME OVER!              ");
 			ncurses::mvprintw(2, 0, "Press enter to finish...");
 			break;
 		}
