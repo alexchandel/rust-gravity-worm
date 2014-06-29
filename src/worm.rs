@@ -114,14 +114,15 @@ fn main() {
 	let mut _max_y = 0;
 	let mut _max_x = 0;
 	ncurses::getmaxyx(ncurses::stdscr, &mut _max_y, &mut _max_x);
+
 	/* Initialize game */
 	let mut g = Game::with_size(_max_y, _max_x);
+
+	/* Run loop */
 	let mut refresher = timer::Timer::new().unwrap();
 	let painter = refresher.periodic(100); // repaint every 100ms
-
-	loop {
-		painter.recv();
-
+	for _ in painter.iter()
+	{
 		/* Update worm direction from input */
 		loop {
 			let chr = ncurses::getch();
