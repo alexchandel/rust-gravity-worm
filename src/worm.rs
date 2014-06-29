@@ -6,9 +6,9 @@ use std::collections::Deque;
 use std::io::timer;
 
 struct Game {
-	worm_height: Box<RingBuf<i32>>,
-	cave_above_height: Box<RingBuf<i32>>,
-	cave_ahead_height: Box<RingBuf<i32>>,
+	worm_height: RingBuf<i32>,
+	cave_above_height: RingBuf<i32>,
+	cave_ahead_height: RingBuf<i32>,
 	gap: i32,
 	cave_incr: bool,
 	worm_decr: bool,
@@ -25,9 +25,9 @@ impl Game {
 		let worm_len  = x/2+1;
 		let ahead_len = x-worm_len;
 
-		let mut worm_ring  = box RingBuf::with_capacity(worm_len as uint);
-		let mut above_ring = box RingBuf::with_capacity(worm_len as uint);
-		let mut ahead_ring = box RingBuf::with_capacity(ahead_len as uint);
+		let mut worm_ring  = RingBuf::with_capacity(worm_len as uint);
+		let mut above_ring = RingBuf::with_capacity(worm_len as uint);
+		let mut ahead_ring = RingBuf::with_capacity(ahead_len as uint);
 
 		worm_ring.extend( count(worm_init, 0).take(worm_len as uint));
 		above_ring.extend(count(cave_init, 0).take(worm_len as uint));
@@ -80,7 +80,7 @@ impl Game {
 }
 
 fn main() {
-
+	/* Write intro + controls to println, and later to ncurses */
 	println!("\nHello world!");
 	println!("Welcome to Rust Gravity Worm for ncurses, by alex!");
 	println!("\nControls:");
