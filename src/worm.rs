@@ -7,14 +7,15 @@ use std::io::timer;
 
 struct Game {
 	worm_height: Box<RingBuf<i32>>,
-    cave_above_height: Box<RingBuf<i32>>,
-    cave_ahead_height: Box<RingBuf<i32>>,
-    gap: i32,
-    cave_incr: bool,
-    worm_decr: bool,
-    max_y: i32,
+	cave_above_height: Box<RingBuf<i32>>,
+	cave_ahead_height: Box<RingBuf<i32>>,
+	gap: i32,
+	cave_incr: bool,
+	worm_decr: bool,
+	max_y: i32,
 	max_x: i32,
-	worm_len: uint
+	worm_len: uint,
+	score: i64
 }
 
 impl Game {
@@ -37,11 +38,12 @@ impl Game {
 			cave_above_height: above_ring,
 			cave_ahead_height: ahead_ring,
 			gap: cave_init*7,
-		    cave_incr: false,
-		    worm_decr: false,
-		    max_y: y,
+			cave_incr: false,
+			worm_decr: false,
+			max_y: y,
 			max_x: x,
-			worm_len: worm_len as uint
+			worm_len: worm_len as uint,
+			score: 0
 		}
 	}
 
@@ -146,13 +148,16 @@ fn main() {
 		for (num, worm) in g.worm_height.iter().enumerate() {
 			ncurses::mvprintw(*worm as i32, num as i32, "="); // Worm
 		}
+		ncurses::mvprintw(0, 0, format!("Score: {0}", g.score).as_slice());
 		/* Check for game over */
 		if !g.worm_alive() {
-			ncurses::mvprintw(0, 0, "GAME OVER!");
-			ncurses::mvprintw(1, 0, "Press any key to finish...");
+			ncurses::mvprintw(1, 0, "GAME OVER!");
+			ncurses::mvprintw(2, 0, "Press enter to finish...");
 			break;
 		}
 		ncurses::refresh();
+
+		g.score += 1;
 	}
 
 	/* Display final sceen until key is pressed */
