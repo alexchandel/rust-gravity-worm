@@ -1,0 +1,11 @@
+[package]
+
+name = "worm"
+version = "0.0.1"
+authors = [ "alexchandel@gmail.com" ]
+
+[[bin]]
+name = "worm"
+
+[dependencies.ncurses]
+git = "https://github.com/jeaye/ncurses-rs.git"
