@@ -8,5 +8,5 @@ authors = [ "alexchandel@gmail.com" ]
 name = "worm"
 
 [dependencies.ncurses]
-git = "https://github.com/alexchandel/ncurses-rs.git"
+git = "https://github.com/jeaye/ncurses-rs.git"
 # path = "../ncurses-rs"
