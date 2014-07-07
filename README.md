@@ -1,4 +1,4 @@
-rust-gravity-worm
+rust-gravity-worm ![Build Status](https://travis-ci.org/alexchandel/rust-gravity-worm.png)
 =================
 
 A textual Gravity Worm game written in Rust using the ncurses TUI library.
