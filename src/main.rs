@@ -1,3 +1,6 @@
+#![crate_type = "bin"]
+#![crate_name = "worm"]
+
 extern crate ncurses;
 
 use std::iter::count;

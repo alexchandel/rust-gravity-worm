@@ -4,9 +4,6 @@ name = "worm"
 version = "0.0.2"
 authors = [ "alexchandel@gmail.com" ]
 
-[[bin]]
-name = "worm"
-
 [dependencies.ncurses]
 git = "https://github.com/jeaye/ncurses-rs.git"
 # path = "../ncurses-rs"
