@@ -1,9 +1,5 @@
 language: rust
-install:
-  - curl http://www.rust-lang.org/rustup.sh | sudo sh -
 script:
   - cargo clean
   - cargo build --verbose
   - cargo test --verbose
-env:
-  - LD_LIBRARY_PATH=/usr/local/lib

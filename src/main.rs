@@ -7,6 +7,7 @@ use std::iter::count;
 use std::collections::ringbuf::RingBuf;
 use std::collections::Deque;
 use std::io::timer;
+use std::time::duration::Duration;
 
 struct Game {
 	worm_height: RingBuf<i32>,
@@ -104,7 +105,7 @@ fn main() {
 	ncurses::mvprintw(7, 4, "any other key:\tDown");
 	ncurses::mvprintw(9, 4, "Press any key to begin...");
 	ncurses::refresh();
-	timer::sleep(500);
+	timer::sleep(Duration::microseconds(500));
 	ncurses::getch();
 
 	/* Keyboard */
@@ -123,7 +124,7 @@ fn main() {
 
 	/* Run loop */
 	let mut refresher = timer::Timer::new().unwrap();
-	let painter = refresher.periodic(100); // repaint every 100ms
+	let painter = refresher.periodic(Duration::microseconds(100)); // repaint every 100ms
 	for _ in painter.iter()
 	{
 		/* Update worm direction from input */
